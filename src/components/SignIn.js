@@ -86,7 +86,7 @@ export default function SignIn({ setName }) {
           />
 
           <Button
-            type="submit"
+            type="button"
             fullWidth
             variant="contained"
             color="primary"
