@@ -11,6 +11,7 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { useState } from 'react';
 
 function Copyright() {
   return (
@@ -53,6 +54,16 @@ const useStyles = makeStyles((theme) => ({
 export default function SignIn({ setName }) {
   const classes = useStyles();
 
+  const [input, setInput] = useState('');
+  const onClickChangeName = () => {
+    setName(input);
+  };
+  const disableFlg = input ? false : true;
+  console.log(disableFlg);
+  const onChangeInput = (e) => {
+    setInput(e.target.value);
+  };
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -70,6 +81,8 @@ export default function SignIn({ setName }) {
             label="ニックネーム"
             name="name"
             autoFocus
+            onChange={onChangeInput}
+            value={input}
           />
 
           <Button
@@ -78,6 +91,8 @@ export default function SignIn({ setName }) {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={onClickChangeName}
+            disabled={disableFlg}
           >
             はじめる
           </Button>
