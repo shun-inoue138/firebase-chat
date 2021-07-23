@@ -51,12 +51,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn({ setName }) {
+export default function SignIn({ name, setName }) {
   const classes = useStyles();
-
+  const [isComposing, setIsComposing] = useState(false);
   const [input, setInput] = useState('');
   const onClickChangeName = () => {
     setName(input);
+    console.log(name);
   };
   const disableFlg = input ? false : true;
   console.log(disableFlg);
@@ -83,6 +84,22 @@ export default function SignIn({ setName }) {
             autoFocus
             onChange={onChangeInput}
             value={input}
+            onKeyDown={(e) => {
+              if (isComposing) {
+                return;
+              }
+              if (e.key == 'Enter') {
+                setName(e.target.value);
+                console.log('enter is typed');
+                e.preventDefault();
+              }
+            }}
+            onCompositionStart={() => {
+              setIsComposing(true);
+            }}
+            onCompositionEnd={() => {
+              setIsComposing(false);
+            }}
           />
 
           <Button
