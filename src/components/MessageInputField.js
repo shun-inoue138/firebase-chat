@@ -1,7 +1,7 @@
 import React from 'react';
 
-const MessageInputField = () => {
-  return <div>inputfield</div>;
+const MessageInputField = ({ className }) => {
+  return <div className={className}>inputfield</div>;
 };
 
 export default MessageInputField;
