@@ -8,7 +8,7 @@ import MessageList from './MessageList';
 import styled from 'styled-components';
 
 const SDiv = styled.div`
-  background-color: gray;
+  /* background-color: gray; */
   display: grid;
   grid-template-rows: 1fr auto;
   height: 100vh;
