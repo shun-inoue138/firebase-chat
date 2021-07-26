@@ -88,7 +88,7 @@ export default function SignIn({ name, setName }) {
               if (isComposing) {
                 return;
               }
-              if (e.key == 'Enter') {
+              if (e.key === 'Enter') {
                 setName(e.target.value);
                 console.log('enter is typed');
                 e.preventDefault();

@@ -8,6 +8,7 @@ const MessageInputField = ({ className, name }) => {
   const avatarPath = gravatarPath(name);
   const [text, setText] = useState('');
   return (
+    // eslint-disable-next-line
     <div className={className} className="m-4">
       <Grid container spacing={3}>
         <Grid item xs={1} className="">
