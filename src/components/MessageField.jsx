@@ -3,12 +3,14 @@ import TextField from '@material-ui/core/TextField';
 import { useState } from 'react';
 import { pushMessage } from '../firebase';
 
-const MessageField = ({ name, text, setText }) => {
+const MessageField = ({ name, text, setText, inputEl }) => {
   const [isComposing, setIsComposing] = useState(false);
   return (
     <div>
       <form action="">
         <TextField
+          inputRef={inputEl}
+          autoFocus
           fullWidth
           value={text}
           onChange={(e) => {

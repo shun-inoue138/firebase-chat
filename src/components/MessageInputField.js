@@ -4,8 +4,10 @@ import { gravatarPath } from '../lib/gravatar';
 import MessageField from './MessageField';
 import { useState } from 'react';
 import MessageSubmitButton from './MessageSubmitButton';
+import { useRef } from 'react';
 
 const MessageInputField = ({ className, name }) => {
+  const inputEl = useRef(null);
   const avatarPath = gravatarPath(name);
   const [text, setText] = useState('');
   return (
@@ -16,10 +18,20 @@ const MessageInputField = ({ className, name }) => {
           <Avatar src={avatarPath} className=""></Avatar>
         </Grid>
         <Grid item xs={10} className="">
-          <MessageField name={name} text={text} setText={setText} />
+          <MessageField
+            name={name}
+            text={text}
+            setText={setText}
+            inputEl={inputEl}
+          />
         </Grid>
         <Grid item xs={1} className="">
-          <MessageSubmitButton name={name} text={text} setText={setText} />
+          <MessageSubmitButton
+            name={name}
+            text={text}
+            setText={setText}
+            inputEl={inputEl}
+          />
         </Grid>
       </Grid>
     </div>

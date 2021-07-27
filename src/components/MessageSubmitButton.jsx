@@ -3,7 +3,7 @@ import { pushMessage } from '../firebase';
 import SendIcon from '@material-ui/icons/Send';
 import { IconButton } from '@material-ui/core';
 
-const MessageSubmitButton = ({ text, name, setText }) => {
+const MessageSubmitButton = ({ text, name, setText, inputEl }) => {
   const disabledFlg = text === '';
   const iconColor = disabledFlg ? 'disabled' : 'primary';
   const onClickPushMessage = () => {
@@ -12,6 +12,7 @@ const MessageSubmitButton = ({ text, name, setText }) => {
     }
     pushMessage({ name: 'たかぎ', text });
     setText('');
+    inputEl.current.focus();
   };
   return (
     <>
