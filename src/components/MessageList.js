@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import '../tailwind.css';
 import { messagesRef } from '../firebase';
+import { List } from '@material-ui/core';
+import MessageListItems from './MessageListItems';
 
 // import { useState } from 'react';
 
@@ -40,13 +42,10 @@ const MessageList = ({ className }) => {
     return <div className={className}>loading...</div>;
   }
   return (
-    <div className={className}>
-      <ul>
-        {messages.map((message) => {
-          return <li key={message.key}>{message.name + ':' + message.text}</li>;
-        })}
-      </ul>
-    </div>
+    // eslint-disable-next-line
+    <List className={className} className="overflow-auto">
+      <MessageListItems messages={messages} />
+    </List>
   );
 };
 
