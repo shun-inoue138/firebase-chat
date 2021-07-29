@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import {
   ListItem,
   ListItemAvatar,
@@ -10,9 +10,23 @@ import {
 import { gravatarPath } from '../lib/gravatar';
 
 const MessageListItems = ({ messages }) => {
-  return messages.map((message) => {
+  const messagesLength = messages.length;
+  let isLastItem = false;
+  const ref = useRef(null);
+  React.useEffect(() => {
+    if (isLastItem) {
+      ref.current.scrollIntoView();
+    }
+    // eslint-disable-next-line
+  }, [isLastItem]);
+
+  return messages.map((message, index) => {
+    if (index + 1 === messagesLength) {
+      isLastItem = true;
+    }
     return (
-      <div key={message.key}>
+      <div key={message.key} ref={ref}>
+        {console.log(isLastItem)}
         <ListItem alignItem="flex-start">
           <ListItemAvatar>
             <Avatar alt="画像なし" src={gravatarPath(message.name)} />

@@ -10,7 +10,7 @@ const MessageSubmitButton = ({ text, name, setText, inputEl }) => {
     if (text === '') {
       return;
     }
-    pushMessage({ name: 'たかぎ', text });
+    pushMessage({ name, text });
     setText('');
     inputEl.current.focus();
   };
